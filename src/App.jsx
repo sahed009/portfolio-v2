@@ -1,9 +1,13 @@
-function App() {
-  return (
-    <div className="bg-gray-100 h-screen flex items-center justify-center">
-      <h1 className="text-7xl font-bold text-blue-600">Hello, Vite + Tailwind CSS!</h1>
-    </div>
-  );
-}
+import Hero from "./components/Hero";
+import { Element } from "react-scroll";
+const App = () => {
+	return (
+		<>
+			<Element name="home">
+				<Hero />
+			</Element>
+		</>
+	);
+};
 
 export default App;
