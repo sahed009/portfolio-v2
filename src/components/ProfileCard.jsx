@@ -1,34 +1,45 @@
-import { FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
-import profileImage from "../assets/profile.webp"; // Adjust path based on your assets folder
-
+import { FaFire } from "react-icons/fa";
+import { FaDribbble, FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
+import profileImg from "../assets/profile.png";
 const ProfileCard = () => {
-	return (
-		<div className="bg-white rounded-lg shadow-lg p-6 relative max-w-sm">
-			<div className="absolute top-0 left-0 w-16 h-0.5 border-t-2 border-dashed border-orange-500"></div>
-			<div className="flex flex-col items-center">
-				<div className="w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center mb-4 border-2 border-dashed border-orange-500">
-					<img
-						src={profileImage}
-						alt="Profile"
-						className="w-20 h-20"
-					/>
-				</div>
-				<h2 className="text-2xl font-bold text-black">Aabid Ahmed</h2>
-				<p className="text-gray-600 text-center mt-2 text-sm">
-					A Software Engineer who has developed countless innovative
-					solutions.
-				</p>
-				<div className="flex space-x-4 mt-4">
-					<FaPhone className="text-orange-500 hover:text-orange-600" />
-					<FaEnvelope className="text-orange-500 hover:text-orange-600" />
-					<FaLinkedin className="text-orange-500 hover:text-orange-600" />
-				</div>
-				<button className="bg-red-600 text-white px-4 py-2 rounded mt-4 hover:bg-red-700">
-					Video Tutorial
-				</button>
-			</div>
-		</div>
-	);
+  return (
+    <div className=" flex items-center justify-center  px-4 md:px-20">
+      <div className="bg-white text-center rounded-2xl p-8 w-full relative shadow-xl">
+        {/* Curved Dotted Line Top Left */}
+        <div className="absolute top-0 left-0 w-24 h-24 rounded-full border-2 border-dashed border-green-500 transform -translate-x-1/2 -translate-y-1/2"></div>
+
+        {/* Profile Image */}
+        <img
+          src={profileImg}
+          alt="MD. Saheduzzaman"
+          className="rounded-xl w-full md:h-96 p-0 object-cover"
+        />
+
+        {/* Name */}
+        <h2 className="text-2xl font-bold mt-4 text-black">MD. Saheduzzaman</h2>
+
+        {/* Fire Icon */}
+        <div className="my-2 relative">
+          <FaFire className="text-green-500 text-xl mx-auto" />
+          {/* Curved Dotted Line Bottom Left */}
+          <div className="absolute -left-10 bottom-0 w-20 h-20 border-2 border-dashed border-green-500 rounded-full transform rotate-90 origin-bottom-left"></div>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 text-sm px-2">
+          A Software Engineer who has developed countless innovative solutions.
+        </p>
+
+        {/* Social Icons */}
+        <div className="flex justify-center gap-4 mt-4 text-green-500 text-xl">
+          <FaDribbble />
+          <FaTwitter />
+          <FaGithub />
+          <FaEnvelope />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ProfileCard;
