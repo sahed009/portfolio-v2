@@ -19,7 +19,7 @@ import profileImg from "../assets/profile.png";
 const ProfileCard = () => {
 	return (
 		<div className="relative flex items-center justify-center px-4 md:px-20">
-			{/* Floating Tech Icons - Solar System Style */}
+			
 			<FaReact
 				className="absolute text-cyan-400 text-3xl drop-shadow-md"
 				style={{
@@ -85,9 +85,8 @@ const ProfileCard = () => {
 				}}
 			/>
 
-			{/* Profile Card - The "Sun" */}
 			<div className="bg-[#0b1215] text-center rounded-2xl p-8 w-full max-w-md relative shadow-xl z-10 overflow-hidden">
-				{/* Top-left partial circle */}
+				
 				<div className="absolute top-0 left-0 w-24 h-24 rounded-full border-2 border-dashed border-green-500 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
 
 				<img
@@ -101,7 +100,7 @@ const ProfileCard = () => {
 				</h2>
 
 				<div className="my-2 relative">
-					{/* Bottom-right partial circle */}
+					
 					<div className="absolute bottom-0 right-0 w-20 h-20 border-2 border-dashed border-green-500 rounded-full transform translate-x-1/2 translate-y-1/2 animate-spin-slow"></div>
 				</div>
 

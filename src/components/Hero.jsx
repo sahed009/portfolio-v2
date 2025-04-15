@@ -3,7 +3,6 @@ import React from "react";
 import TopBar from "./TopBar";
 import ProfileCard from "./ProfileCard";
 import MainContent from "./MainContent";
-import SkillCards from "./SkillCards";
 const Hero = () => {
 	return (
 		<>
@@ -16,7 +15,6 @@ const Hero = () => {
 						<ProfileCard />
 						<MainContent />
 					</div>
-					<SkillCards />
 				</div>
 			</div>
 		</>

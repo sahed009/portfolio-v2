@@ -18,7 +18,7 @@ const Footer = () => {
 
 	return (
 		<motion.footer
-			className="bg-[#171717] text-gray-300 py-10 px-6 md:px-12"
+			className="bg-[#060606] text-gray-300 py-10 px-6 md:px-12"
 			initial="hidden"
 			whileInView="visible"
 			viewport={{ once: true }}

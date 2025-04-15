@@ -4,8 +4,8 @@ import { Link } from "react-scroll";
 
 const navItems = [
   { icon: FaHome, to: "home", label: "Home" },
+  { icon: FaNetworkWired, to: "background", label: "Background" },
   { icon: FaFolder, to: "projects", label: "Projects" },
-  { icon: FaNetworkWired, to: "network", label: "Network" },
   { icon: FaWrench, to: "skills", label: "Skills" },
   { icon: MdConnectWithoutContact, to: "contact", label: "Contact" },
 ];

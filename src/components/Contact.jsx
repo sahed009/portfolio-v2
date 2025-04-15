@@ -52,7 +52,7 @@ const Contact = () => {
 			.then(
 				() => {
 					toast.success("Message sent successfully!");
-					// Reset form
+					
 					setName("");
 					setEmail("");
 					setMessage("");
@@ -69,7 +69,7 @@ const Contact = () => {
 	return (
 		<section
 			id="contact"
-			className="py-12 px-4 bg-gradient-to-br from-[#171717] to-[#0c0c0c] text-gray-200 overflow-hidden"
+			className="pt-30 pb-12 px-4 bg-gradient-to-br from-[#171717] to-[#0c0c0c] text-gray-200 overflow-hidden"
 		>
 			<ToastContainer position="top-right" autoClose={5000} />
 
@@ -80,7 +80,7 @@ const Contact = () => {
 				viewport={{ once: true }}
 				className="max-w-lg mx-auto bg-[#171717] bg-opacity-60 rounded-xl shadow-lg p-6 backdrop-blur-sm"
 			>
-				<h2 className="text-3xl font-semibold text-center mb-8 font-mono">
+				<h2 className="text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 text-center mb-8">
 					Contact Me
 				</h2>
 				<form onSubmit={handleSubmit} className="space-y-6">

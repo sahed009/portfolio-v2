@@ -19,7 +19,7 @@ const MainContent = () => {
 	});
 
 	return (
-		<div className="h-screen text-center text-white p-8">
+		<div className="h-screen text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 p-8">
 			
 			<h1 className="text-4xl md:text-6xl font-bold mb-4">
 				{text}
