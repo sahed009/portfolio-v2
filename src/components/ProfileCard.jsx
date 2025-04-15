@@ -125,7 +125,7 @@ const ProfileCard = () => {
 				</div>
 			</div>
 
-			{/* Inject Keyframe CSS for Animations */}
+			
 			<style>
 				{`
 			@keyframes orbit1 {

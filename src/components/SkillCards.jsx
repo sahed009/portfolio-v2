@@ -1,104 +1,164 @@
 import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { FaReact, FaJs } from "react-icons/fa";
 import { SiTailwindcss, SiFirebase } from "react-icons/si";
 
-// Map your color keys to complete class names
-const colorMapping = {
-	"blue-400": { bg: "bg-blue-400", text: "text-blue-400" },
-	"yellow-400": { bg: "bg-yellow-400", text: "text-yellow-400" },
-	"teal-400": { bg: "bg-teal-400", text: "text-teal-400" },
-	"orange-400": { bg: "bg-orange-400", text: "text-orange-400" },
-};
-
 const skills = [
 	{
 		name: "React",
-		icon: <FaReact className="text-blue-400" />,
+		icon: FaReact,
 		proficiency: 95,
-		color: "blue-400",
+		color: "#61dafb",
+		description: "Building dynamic UIs",
 	},
 	{
 		name: "JavaScript",
-		icon: <FaJs className="text-yellow-400" />,
+		icon: FaJs,
 		proficiency: 90,
-		color: "yellow-400",
+		color: "#f7df1e",
+		description: "Core web programming",
 	},
 	{
 		name: "TailwindCSS",
-		icon: <SiTailwindcss className="text-teal-400" />,
+		icon: SiTailwindcss,
 		proficiency: 85,
-		color: "teal-400",
+		color: "#38bdf8",
+		description: "Utility-first CSS",
 	},
 	{
 		name: "Firebase",
-		icon: <SiFirebase className="text-orange-400" />,
+		icon: SiFirebase,
 		proficiency: 80,
-		color: "orange-400",
+		color: "#ffca28",
+		description: "Backend as a service",
 	},
 ];
 
-const SkillCards = () => {
-	return (
-		<section className="w-full pt-40 pb-12 px-4 bg-[#060606] border-t border-gray-800 text-gray-100">
-			<div className="max-w-6xl mx-auto">
-				<h2 className="text-5xl font-semibold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
-					Skills
-				</h2>
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-					{skills.map((skill, index) => {
-						const { bg, text } = colorMapping[skill.color];
+const SkillCard = ({ skill, index }) => {
+	const Icon = skill.icon;
+	const controls = useAnimation();
+	const [ref, inView] = useInView({ threshold: 0.4 }); 
 
-						return (
-							<motion.div
-								key={index}
-								className="flex flex-col items-center p-6 bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true, amount: 0.2 }}
-								transition={{
-									duration: 0.5,
-									delay: index * 0.1,
-								}}
-								whileHover={{ scale: 1.05 }}
-							>
-								<div className="text-3xl mb-4">
-									{skill.icon}
-								</div>
-								<h3 className="text-lg font-medium text-gray-100 mb-2">
-									{skill.name}
-								</h3>
-								<CountUp
-									start={0}
-									end={skill.proficiency}
-									duration={1.5}
-									suffix="%"
-									className={`text-xl font-semibold ${text}`}
-								/>
-								<div className="w-full h-1.5 bg-gray-700 mt-2 rounded-full">
-									<motion.div
-										className={`h-full ${bg} rounded-full`}
-										initial={{ width: 0 }}
-										whileInView={{
-											width: `${skill.proficiency}%`,
-										}}
-										viewport={{ once: true, amount: 0.3 }}
-										transition={{
-											duration: 1.5,
-											ease: "easeOut",
-											delay: 0.5 + index * 0.1,
-										}}
-									/>
-								</div>
-							</motion.div>
-						);
-					})}
-				</div>
+	React.useEffect(() => {
+		if (inView) {
+			controls.start("visible");
+		} else {
+			controls.start("hidden"); 
+		}
+	}, [inView, controls]);
+
+	return (
+		<motion.div
+			ref={ref}
+			className="relative flex flex-col items-center p-6 bg-[#0e0e0e] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group"
+			variants={{
+				hidden: { opacity: 0, y: 30 },
+				visible: { opacity: 1, y: 0 },
+			}}
+			initial="hidden"
+			animate={controls}
+			transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
+			role="article"
+			aria-label={`Skill: ${skill.name}, Proficiency: ${skill.proficiency}%`}
+			tabIndex={0}
+		>
+			
+			<div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-12 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+				{skill.description}
 			</div>
-		</section>
+
+			
+			<div className="relative w-28 h-28 mb-5">
+				<svg className="w-full h-full" viewBox="0 0 36 36">
+					<circle
+						className="text-gray-600"
+						strokeWidth="3"
+						stroke="currentColor"
+						fill="none"
+						cx="18"
+						cy="18"
+						r="15.9155"
+					/>
+					<motion.circle
+						className="text-current"
+						stroke={skill.color}
+						strokeWidth="3"
+						strokeLinecap="round"
+						fill="none"
+						cx="18"
+						cy="18"
+						r="15.9155"
+						initial={{ strokeDasharray: "0 100" }}
+						animate={
+							inView
+								? {
+										strokeDasharray: `${skill.proficiency} 100`,
+								  }
+								: { strokeDasharray: "0 100" }
+						}
+						transition={{
+							duration: 1.5,
+							ease: "easeInOut",
+							delay: 0.3 + index * 0.15,
+						}}
+					/>
+				</svg>
+				<motion.div
+					className="absolute inset-0 flex items-center justify-center"
+					style={{ color: skill.color }}
+					animate={
+						inView
+							? { scale: [1, 1.2, 1], rotate: [0, 10, 0] }
+							: { scale: 1, rotate: 0 }
+					}
+					transition={{ duration: 0.8, delay: 0.5 + index * 0.15 }}
+				>
+					<Icon size={32} />
+				</motion.div>
+			</div>
+
+			<h3 className="text-xl font-semibold mb-2 text-gray-100">
+				{skill.name}
+			</h3>
+			{inView && (
+				<CountUp
+					start={0}
+					end={skill.proficiency}
+					duration={1.5}
+					suffix="%"
+					className="text-2xl font-bold text-gray-200"
+				/>
+			)}
+		</motion.div>
 	);
 };
+
+const SkillCards = () => (
+	<section
+		className="w-full py-32 px-4 bg-gradient-to-b from-[#0a0a0a] to-[#1a1a1a] text-gray-100 relative overflow-hidden"
+		style={{
+			backgroundImage:
+				"radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 50%)",
+		}}
+	>
+		<div className="max-w-7xl mx-auto">
+			<motion.h2
+				className="text-5xl md:text-6xl font-extrabold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500"
+				initial={{ opacity: 0, y: -20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8 }}
+			>
+				My Skills
+			</motion.h2>
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+				{skills.map((skill, index) => (
+					<SkillCard key={skill.name} skill={skill} index={index} />
+				))}
+			</div>
+		</div>
+	</section>
+);
 
 export default SkillCards;

@@ -25,7 +25,7 @@ const ProjectCard = ({
 					/>
 				) : (
 					<div className="w-full h-56 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-						<FaFolder className="text-5xl text-gray-500" />
+						<FaFolder className="text-5xl md:text-6xl text-gray-500" />
 					</div>
 				)}
 				<div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
@@ -80,7 +80,7 @@ const ProjectShowcase = ({ projects }) => {
 		<section id="projects" className="pt-36 pb-20 bg-[#060606]">
 			<div className="max-w-7xl mx-auto px-6">
 				<motion.h2
-					className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12"
+					className="text-5xl md:text-6xl font-extrabold text-center text-white mb-12"
 					initial={{ opacity: 0, y: -20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
@@ -90,7 +90,7 @@ const ProjectShowcase = ({ projects }) => {
 						My Projects
 					</span>
 				</motion.h2>
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
 					{projects.map((project, index) => (
 						<motion.div
 							key={index}

@@ -31,23 +31,22 @@ function Timeline() {
 	const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
 	return (
-		<div ref={timelineRef} className="relative">
-			{/* Central timeline */}
+		<div ref={timelineRef} className="relative mt-16">
 			<div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-green-500"></div>
-			{/* Progress line */}
+			
 			<motion.div
 				className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-1 bg-white"
 				style={{ height }}
 			/>
-			{/* Events */}
+			
 			{events.map((event, index) => (
 				<div
 					key={index}
 					className="relative mb-12 flex justify-center items-start"
 				>
-					{/* Connector dot */}
+					
 					<div className="absolute left-1/2 transform -translate-x-1/2 -top-8 md:top-10 w-4 h-4 bg-green-400 rounded-full z-10"></div>
-					{/* Event card */}
+					
 					<div
 						className={`w-11/12 sm:w-6/12 md:w-5/12 ${
 							index % 2 === 0 ? "mr-auto" : "ml-auto"
@@ -76,7 +75,7 @@ function Timeline() {
 								</p>
 							</div>
 						</motion.div>
-						{/* Connector line */}
+						
 						<div
 							className={`absolute top-1/2 ${
 								index % 2 === 0
@@ -93,9 +92,9 @@ function Timeline() {
 
 export default function Background() {
 	return (
-		<section className="pt-40 pb-16 bg-[#171717] overflow-hidden">
+		<section className="pt-30 pb-16 bg-[#060606] overflow-hidden">
 			<div className="container mx-auto px-4">
-				<h2 className="text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+				<h2 className="text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
 					My Journey
 				</h2>
 				<Timeline />
