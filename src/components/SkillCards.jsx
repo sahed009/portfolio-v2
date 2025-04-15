@@ -42,7 +42,7 @@ const skills = [
 
 const SkillCards = () => {
 	return (
-		<section className="w-full py-12 px-4 bg-[#060606] border-t border-gray-800 text-gray-100">
+		<section className="w-full mt-14 py-12 px-4 bg-[#060606] border-t border-gray-800 text-gray-100">
 			<div className="max-w-6xl mx-auto">
 				<h2 className="text-3xl font-semibold text-center mb-10 text-gray-100">
 					Skills

@@ -5,7 +5,6 @@ import { FaCalendarAlt, FaFolder, FaGlobe } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const MainContent = () => {
-	// Typewriter effect for multiple titles
 	const [text] = useTypewriter({
 		words: [
 			"Frontend Developer",
@@ -21,20 +20,18 @@ const MainContent = () => {
 
 	return (
 		<div className="h-screen text-center text-white p-8">
-			{/* Heading with typewriter effect */}
+			
 			<h1 className="text-4xl md:text-6xl font-bold mb-4">
 				{text}
 				<Cursor />
 			</h1>
 
-			{/* Description */}
 			<p className="mt-4 text-sm md:text-base max-w-md mx-auto text-gray-300">
 				Passionate about creating intuitive and engaging user
 				experiences. Specialize in transforming ideas into beautifully
 				crafted products.
 			</p>
 
-			{/* Stats with creative design */}
 			<div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

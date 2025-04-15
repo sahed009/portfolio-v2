@@ -5,12 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-	// State for form fields
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 
-	// Helper function to handle input changes
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "name") setName(value);
@@ -18,7 +16,6 @@ const Contact = () => {
 		if (name === "message") setMessage(value);
 	};
 
-	// Simple email validation
 	const isValidEmail = (email) => {
 		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return re.test(email);
@@ -27,7 +24,6 @@ const Contact = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Basic front-end validation
 		if (!name || !email || !message) {
 			toast.error("Please fill in all fields");
 			return;
@@ -37,24 +33,21 @@ const Contact = () => {
 			return;
 		}
 
-		// Optional logs to confirm you have the correct env values
 		console.log("Service ID:", import.meta.env.VITE_SERVICE_ID);
 		console.log("Template ID:", import.meta.env.VITE_TEMPLATE_ID);
 		console.log(
 			"User/Public Key:",
-			import.meta.env.VITE_USER_ID /* or VITE_PUBLIC_KEY */
+			import.meta.env.VITE_USER_ID 
 		);
 
-		// Provide user feedback
 		toast.info("Sending...");
 
-		// Attempt sending the form
 		emailjs
 			.sendForm(
-				import.meta.env.VITE_SERVICE_ID, // e.g. service_88hho7m
-				import.meta.env.VITE_TEMPLATE_ID, // e.g. template_y3bf2jw
+				import.meta.env.VITE_SERVICE_ID, 
+				import.meta.env.VITE_TEMPLATE_ID, 
 				e.target,
-				import.meta.env.VITE_USER_ID // or your public key, e.g. public_XXXXXXXX
+				import.meta.env.VITE_USER_ID 
 			)
 			.then(
 				() => {
@@ -76,9 +69,8 @@ const Contact = () => {
 	return (
 		<section
 			id="contact"
-			className="py-12 px-4 bg-gradient-to-br from-[#171717] to-[#0c0c0c] text-gray-200"
+			className="py-12 px-4 bg-gradient-to-br from-[#171717] to-[#0c0c0c] text-gray-200 overflow-hidden"
 		>
-			{/* ToastContainer for notifications */}
 			<ToastContainer position="top-right" autoClose={5000} />
 
 			<motion.div
@@ -102,7 +94,7 @@ const Contact = () => {
 						<input
 							type="text"
 							id="name"
-							name="name" // Must match template variable if you're using `{{name}}`
+							name="name"
 							value={name}
 							onChange={handleChange}
 							className="w-full p-3 bg-gray-800 rounded-lg text-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
@@ -119,7 +111,7 @@ const Contact = () => {
 						<input
 							type="email"
 							id="email"
-							name="email" // Must match template variable `{{email}}`
+							name="email" 
 							value={email}
 							onChange={handleChange}
 							className="w-full p-3 bg-gray-800 rounded-lg text-gray-100 border border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
@@ -135,7 +127,7 @@ const Contact = () => {
 						</label>
 						<textarea
 							id="message"
-							name="message" // Must match template variable `{{message}}`
+							name="message" 
 							value={message}
 							onChange={handleChange}
 							rows="4"

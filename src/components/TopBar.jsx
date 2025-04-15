@@ -2,7 +2,6 @@ import { FaHome, FaFolder, FaNetworkWired, FaWrench } from "react-icons/fa";
 import { MdConnectWithoutContact } from "react-icons/md";
 import { Link } from "react-scroll";
 
-// Define navigation items with icons, targets, and labels
 const navItems = [
   { icon: FaHome, to: "home", label: "Home" },
   { icon: FaFolder, to: "projects", label: "Projects" },
