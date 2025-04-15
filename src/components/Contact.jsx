@@ -215,7 +215,7 @@ const Contact = () => {
 
 				<motion.button
 					onClick={() => setIsModalOpen(true)}
-					className="relative mx-auto block px-6 py-3 bg-cyan-600 text-white rounded-xl hover:bg-cyan-700 transition-all duration-300 font-semibold z-10"
+					className="relative mx-auto block px-6 py-3 bg-[#0b1215]  text-white rounded-xl hover:bg-[#171717] transition-all duration-300 font-semibold shadow-2xl z-10"
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 				>
